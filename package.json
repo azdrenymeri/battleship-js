@@ -1,0 +1,24 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Classic battleship game",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage --colors",
+    "webpack": "webpack --colors",
+    "webpack-watch": "webpack --watch --colors"
+  },
+  "author": "Azdren Ymeri",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "eslint": "^6.2.2",
+    "eslint-config-google": "^0.13.0",
+    "jest": "^24.9.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  }
+}
