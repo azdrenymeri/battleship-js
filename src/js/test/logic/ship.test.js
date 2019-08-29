@@ -3,7 +3,10 @@ import {Ship} from './../../logic/ship';
 describe('ship.js', ()=> {
   let carrier;
   beforeAll(()=> {
-    carrier = new Ship(4);
+    carrier = new Ship('carrier', 4);
+  });
+  test('ship should have a name', () => {
+    expect(carrier.name).toBe('carrier');
   });
 
   test('ship length must be exact', () => {

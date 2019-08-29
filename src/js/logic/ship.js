@@ -1,5 +1,6 @@
 
-const Ship = (shipLength) => {
+const Ship = (shipName, shipLength) => {
+  const name = shipName;
   const length = shipLength;
   const body = new Array(shipLength).fill(false);
   const isSunk = () => body.every((item) => item === true);
@@ -14,6 +15,6 @@ const Ship = (shipLength) => {
     return true;
   };
 
-  return {body, isSunk, hit, length};
+  return {body, isSunk, hit, length, name};
 };
 export {Ship};
