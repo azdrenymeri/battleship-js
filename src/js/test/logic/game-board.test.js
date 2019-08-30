@@ -70,12 +70,15 @@ describe('game-board.js', ()=>{
     expect(board.grid[37]).toBe(destroyer.name);
   });
   test('we missed a hit', () => {
-    expect(board.acceptHit(33)).toBe(false);
+    expect(board.receiveAttack(33)).toBe(false);
     expect(board.grid[33]).toBe('miss');
     expect(board.missedHits.length).toBe(1);
   });
   test('we hit the submarine', ()=> {
-    expect(board.acceptHit(13)).toBe(true);
+    expect(board.receiveAttack(13)).toBe(true);
     expect(submarine.body[1]).toBe(true);
+  });
+  test('we cannot hit the same coordinate two times', () => {
+    expect(board.receiveAttack(33)).toBe(false);
   });
 });
