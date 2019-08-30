@@ -1,6 +1,6 @@
 
 const GameBoard = () => {
-  const missedHits = 0;
+  const missedHits = [];
   const grid = new Array(100).fill().map((v, i)=>i);
   const shipsOnBoard = [];
   const placeShip = (ship, coordinate, position) => {
@@ -9,11 +9,13 @@ const GameBoard = () => {
     if (position === 'h') {
       ship.body.forEach((item) => {
         shipCoordinates.push(grid.indexOf(grid[coordinate]));
+        ship.coordinates.push(grid[coordinate]);
         coordinate++;
       });
     } else if (position === 'v') {
       ship.body.forEach((item) => {
         shipCoordinates.push(grid.indexOf(grid[coordinate]));
+        ship.coordinates.push(grid[coordinate]);
         coordinate+=10;
       });
     }
@@ -24,6 +26,7 @@ const GameBoard = () => {
       if (shipCoordinates[shipCoordinates.length-1] === -1) {
         return false;
       }
+
       shipCoordinates.forEach((coord) => {
         grid[coord] = ship.name;
       });
@@ -34,18 +37,38 @@ const GameBoard = () => {
   };
 
   const acceptHit = (coordinate) => {
-    if (grid[coordinate] === typeof 'string') {
+    if (typeof grid[coordinate] === 'string') {
+      if (grid[coordinate] === 'miss') {
+        return false;
+      }
       const shipThatGotHit = findShip(grid[coordinate]);
-      console.log(shipThatGotHit.name);
-      return true;
+      console.log('ship that got hit is : ', shipThatGotHit.name);
+
+      if (shipThatGotHit) {
+        return shipThatGotHit.hitWithCoordinate(coordinate);
+      }
+      grid[coordinate] = 'miss';
+      missedHits.push(coordinate);
+      return false;
     }
+    grid[coordinate] = 'miss';
+    missedHits.push(coordinate);
     return false;
   };
   const findShip = (name) => {
-    return shipsOnBoard.fill((ship) => ship.name === name);
+    return shipsOnBoard.find((ship) => ship.name === name);
   };
-
-  return {placeShip, grid, missedHits, acceptHit};
+  const printGrid = () =>{
+    let tempStr;
+    for (let i = 0; i< grid.length; i++) {
+      tempStr += ` [${grid[i]}]`;
+      if (i%10==0) {
+        tempStr+='\n';
+      }
+    };
+    console.log(tempStr);
+  };
+  return {placeShip, grid, missedHits, acceptHit, printGrid};
 };
 
 export {GameBoard};

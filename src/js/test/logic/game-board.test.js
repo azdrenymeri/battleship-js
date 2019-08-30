@@ -5,31 +5,43 @@ describe('game-board.js', ()=>{
   let submarine;
   let carrier;
   let battleShip;
+  let destroyer;
   let board;
 
   beforeAll(() => {
     submarine = new Ship('submarine', 3);
     carrier = new Ship('carrier', 5);
     battleShip = new Ship('battleShip', 4);
+    destroyer = new Ship('destroyer', 2);
     board = new GameBoard();
   });
 
-  test('Submarine should be placed VERTICALLY on the board', ()=> {
+  test('submarine is placed on board', ()=> {
     expect(board.placeShip(submarine, 12, 'h')).toBe(true);
   });
 
-  test('Carrier should be placed HORIZONTALLY on the board', ()=> {
+  test('carrier is placed on board ', ()=> {
     expect(board.placeShip(carrier, 54, 'v')).toBe(true);
   });
 
-  test('You can\'t add battleship outside the grid', ()=> {
+  test('can\'t add battleship outside the grid', ()=> {
     expect(board.placeShip(battleShip, 99, 'h')).toBe(false);
   });
-  test('You can\'t add battleShip on occupied coordinate', ()=> {
+
+  test('can\'t add battleShip on occupied coordinate', ()=> {
     expect(board.placeShip(battleShip, 54, 'h')).toBe(false);
   });
-  test('battleShip should be placed horizontaly on the board', ()=> {
+
+  test('battleShip is placed on board', ()=> {
     expect(board.placeShip(battleShip, 96, 'h')).toBe(true);
+  });
+
+  test('can\'t add destroyer on top of submarine', ()=>{
+    expect(board.placeShip(destroyer, 2, 'v')).toBe(false);
+  });
+
+  test('destroyer is placed on board', ()=> {
+    expect(board.placeShip(destroyer, 27, 'v')).toBe(true);
   });
 
   test('submarine is placed on correct coordinates', ()=> {
@@ -51,5 +63,19 @@ describe('game-board.js', ()=>{
     expect(board.grid[97]).toBe(battleShip.name);
     expect(board.grid[98]).toBe(battleShip.name);
     expect(board.grid[99]).toBe(battleShip.name);
+  });
+
+  test('destroyer is placed on correct coordinates', ()=> {
+    expect(board.grid[27]).toBe(destroyer.name);
+    expect(board.grid[37]).toBe(destroyer.name);
+  });
+  test('we missed a hit', () => {
+    expect(board.acceptHit(33)).toBe(false);
+    expect(board.grid[33]).toBe('miss');
+    expect(board.missedHits.length).toBe(1);
+  });
+  test('we hit the submarine', ()=> {
+    expect(board.acceptHit(13)).toBe(true);
+    expect(submarine.body[1]).toBe(true);
   });
 });
