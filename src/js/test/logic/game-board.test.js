@@ -77,8 +77,15 @@ describe('game-board.js', ()=>{
   test('we hit the submarine', ()=> {
     expect(board.receiveAttack(13)).toBe(true);
     expect(submarine.body[1]).toBe(true);
+    board.printGrid();
   });
   test('we cannot hit the same coordinate two times', () => {
     expect(board.receiveAttack(33)).toBe(false);
+  });
+  test('getFreePlaces must return all free spaces in grid', ()=> {
+    board.getFreePlaces().forEach((place) => {
+      expect(place).not.toBe('hit');
+      expect(place).not.toBe('miss');
+    });
   });
 });

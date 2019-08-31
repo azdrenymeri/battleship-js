@@ -3,6 +3,7 @@ const GameBoard = () => {
   const missedHits = [];
   const grid = new Array(100).fill().map((v, i)=>i);
   const shipsOnBoard = [];
+
   const placeShip = (ship, coordinate, position) => {
     // first  lets get the  positions we gonna add the ship
     const shipCoordinates = [];
@@ -44,7 +45,10 @@ const GameBoard = () => {
       const shipThatGotHit = findShip(grid[coordinate]);
 
       if (shipThatGotHit) {
-        return shipThatGotHit.hitWithCoordinate(coordinate);
+        if (shipThatGotHit.hitWithCoordinate(coordinate)) {
+          grid[coordinate] = shipThatGotHit.name+'-hit';
+          return true;
+        }
       }
       grid[coordinate] = 'miss';
       missedHits.push(coordinate);
@@ -54,9 +58,11 @@ const GameBoard = () => {
     missedHits.push(coordinate);
     return false;
   };
+
   const findShip = (name) => {
     return shipsOnBoard.find((ship) => ship.name === name);
   };
+
   const printGrid = () =>{
     let tempStr;
     for (let i = 0; i< grid.length; i++) {
@@ -67,7 +73,12 @@ const GameBoard = () => {
     };
     console.log(tempStr);
   };
-  return {placeShip, grid, missedHits, receiveAttack, printGrid};
+
+  const getFreePlaces = () => {
+    return grid.filter((column) => column !== 'hit' && column !== 'miss');
+  };
+
+  return {placeShip, grid, missedHits, receiveAttack, printGrid, getFreePlaces};
 };
 
 export {GameBoard};
