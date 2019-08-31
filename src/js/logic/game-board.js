@@ -74,11 +74,12 @@ const GameBoard = () => {
     console.log(tempStr);
   };
 
-  const getFreePlaces = () => {
+  const getFreeColumns = () => {
     return grid.filter((column) => column !== 'hit' && column !== 'miss');
   };
 
-  return {placeShip, grid, missedHits, receiveAttack, printGrid, getFreePlaces};
+  return {placeShip, grid, missedHits,
+    receiveAttack, printGrid, getFreeColumns};
 };
 
 export {GameBoard};

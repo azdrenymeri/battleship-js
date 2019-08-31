@@ -83,7 +83,7 @@ describe('game-board.js', ()=>{
     expect(board.receiveAttack(33)).toBe(false);
   });
   test('getFreePlaces must return all free spaces in grid', ()=> {
-    board.getFreePlaces().forEach((place) => {
+    board.getFreeColumns().forEach((place) => {
       expect(place).not.toBe('hit');
       expect(place).not.toBe('miss');
     });
