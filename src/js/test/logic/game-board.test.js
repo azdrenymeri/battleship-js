@@ -1,5 +1,5 @@
-import {Ship} from './../../logic/ship';
-import {GameBoard} from './../../logic/game-board';
+import {ship} from './../../logic/ship';
+import {gameBoard} from './../../logic/game-board';
 
 describe('game-board.js', ()=>{
   let submarine;
@@ -9,11 +9,11 @@ describe('game-board.js', ()=>{
   let board;
 
   beforeAll(() => {
-    submarine = new Ship('submarine', 3);
-    carrier = new Ship('carrier', 5);
-    battleShip = new Ship('battleShip', 4);
-    destroyer = new Ship('destroyer', 2);
-    board = new GameBoard();
+    submarine = ship('submarine', 3);
+    carrier = ship('carrier', 5);
+    battleShip = ship('battleShip', 4);
+    destroyer = ship('destroyer', 2);
+    board = gameBoard();
   });
 
   test('submarine is placed on board', ()=> {

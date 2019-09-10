@@ -1,5 +1,5 @@
 
-const Ship = (shipName, shipLength) => {
+const ship = (shipName, shipLength) => {
   const name = shipName;
   const length = shipLength;
   const body = new Array(shipLength).fill(false);
@@ -24,4 +24,5 @@ const Ship = (shipName, shipLength) => {
 
   return {body, isSunk, hit, length, name, coordinates, hitWithCoordinate};
 };
-export {Ship};
+
+export {ship};

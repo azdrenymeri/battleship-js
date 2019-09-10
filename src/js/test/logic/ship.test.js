@@ -1,10 +1,12 @@
-import {Ship} from './../../logic/ship';
+import {ship} from './../../logic/ship';
 
 describe('ship.js', ()=> {
   let carrier;
   beforeAll(()=> {
-    carrier = new Ship('carrier', 4);
+    carrier = ship('carrier', 4);
   });
+  console.log(carrier);
+
   test('ship should have a name', () => {
     expect(carrier.name).toBe('carrier');
   });

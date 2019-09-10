@@ -86,14 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/game-loop.js":
+/*!*****************************!*\
+  !*** ./src/js/game-loop.js ***!
+  \*****************************/
+/*! exports provided: gameLoop */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"gameLoop\", function() { return gameLoop; });\n// import Player from './logic/player';\n// import Computer from './logic/computer';\n// import GameBoard from './logic/game-board';\n\nconst gameLoop = () => {\n  const init = () => {\n  //   const playerBoard = new GameBoard();\n  //   const computerBoard = new GameBoard();\n  //\n  //   const player = new Player('John Doe', playerBoard);\n  //   const pc = new Computer(computerBoard);\n  //   console.log('');\n  //   console.log(pc.randomIndex(player.board.getFreeColumns()));\n    console.log('this is working properly');\n  };\n\n  return {init};\n};\n\n\n\n\n//# sourceURL=webpack:///./src/js/game-loop.js?");
+
+/***/ }),
+
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/js/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _game_loop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game-loop */ \"./src/js/game-loop.js\");\n\n// import Player from './logic/player';\n// import {Computer} from './logic/computer';\n//\n// console.log(newComp);\nconst game = Object(_game_loop__WEBPACK_IMPORTED_MODULE_0__[\"gameLoop\"])();\ngame.init();\n\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ })
 

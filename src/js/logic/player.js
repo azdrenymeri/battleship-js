@@ -4,4 +4,4 @@ const Player = (playerName, playerBoard) => {
   return {name, board};
 };
 
-export {Player};
+export default {Player};

@@ -1,5 +1,5 @@
 
-const GameBoard = () => {
+const gameBoard = () => {
   const missedHits = [];
   const grid = new Array(100).fill().map((v, i)=>i);
   const shipsOnBoard = [];
@@ -82,4 +82,4 @@ const GameBoard = () => {
     receiveAttack, printGrid, getFreeColumns};
 };
 
-export {GameBoard};
+export {gameBoard};
