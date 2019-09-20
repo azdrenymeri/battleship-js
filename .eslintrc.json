@@ -15,6 +15,5 @@
         "sourceType": "module"
     },
     "rules": {
-      "require-jsdoc":"off"
     }
 }

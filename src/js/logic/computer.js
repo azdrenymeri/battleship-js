@@ -3,9 +3,9 @@ const computer = (gameBoard) => {
 
   const randomIndex = (freeColumns) => {
     const genIndex = Math
-        .floor(Math.random()*(freeColumns.length-1 - 0 + 1)) + 0;
+        .floor(Math.random() * (freeColumns.length - 1 - 0 + 1)) + 0;
     return freeColumns[genIndex];
   };
   return {board, randomIndex};
 };
-export default {computer};
+export {computer};

@@ -1,8 +1,8 @@
-import {ship} from './../../logic/ship';
+import {ship} from '../../logic/ship';
 
-describe('ship.js', ()=> {
+describe('ship.js', () => {
   let carrier;
-  beforeAll(()=> {
+  beforeAll(() => {
     carrier = ship('carrier', 4);
   });
   console.log(carrier);
